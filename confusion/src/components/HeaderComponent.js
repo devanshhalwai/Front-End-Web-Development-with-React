@@ -32,7 +32,7 @@ class Header extends Component {
       <React.Fragment>
         <Navbar dark expand="md">
           <div className="container">
-            <NavbarBrand className="mr-auto" href="/">
+            <NavbarBrand className="mr-3" href="/">
               <img
                 src="assets/images/logo.png"
                 height="30"
@@ -43,22 +43,22 @@ class Header extends Component {
             <NavbarToggler onClick={this.toggleNav} />
             <Collapse isOpen={this.state.isNavOpen} navbar>
               <Nav navbar>
-                <NavItem>
+                <NavItem className="mx-2">
                   <NavLink className="nav-link" to="/home">
                     <span className="fa fa-home fa-lg"></span> Home
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                <NavItem className="mx-2">
                   <NavLink className="nav-link" to="/aboutus">
                     <span className="fa fa-info fa-lg"></span> About Us
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                <NavItem className="mx-2">
                   <NavLink className="nav-link" to="/menu">
                     <span className="fa fa-list fa-lg"></span> Menu
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                <NavItem className="mx-2">
                   <NavLink className="nav-link" to="/contactus">
                     <span className="fa fa-address-card fa-lg"></span> Contact
                     Us

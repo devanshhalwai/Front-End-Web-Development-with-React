@@ -7,6 +7,7 @@ import {
   CardTitle,
   CardSubtitle,
 } from "reactstrap";
+import { Link } from 'react-router-dom';
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +38,9 @@ class Home extends Component {
       <div className="container">
         <div className="row align-items-start">
           <div className="col-12 col-md m-1">
-            {this.renderCard(this.props.dish)}
+            <Link to={`/menu/${this.props.dish.id}`} style={{ textDecoration: 'none' ,color: 'black'}} >
+              {this.renderCard(this.props.dish)}
+            </Link>
           </div>
           <div className="col-12 col-md m-1">
             {this.renderCard(this.props.promotion)}
