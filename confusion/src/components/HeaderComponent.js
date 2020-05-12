@@ -114,7 +114,7 @@ class Header extends Component {
               </div>
             </div>
           </div>
-          <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+          <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} className="modal-dialog-centered">
             <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
             <ModalBody>
               <Form onSubmit={this.handleLogin}>
