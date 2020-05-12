@@ -38,6 +38,8 @@ class Contact extends Component {
     this.handleBlur = this.handleBlur.bind(this);
   }
 
+  // !Good Example of Controlled Form validation
+
   handleInputChange(event) {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
@@ -56,6 +58,8 @@ class Contact extends Component {
     alert("Current State is: " + JSON.stringify(this.state));
     event.preventDefault();
   }
+
+  //* Most Important way of changing touched Parameters
 
   handleBlur = (feilds) => (evt) => {
     this.setState({
