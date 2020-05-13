@@ -30,8 +30,12 @@ class CommentForm extends Component {
 
   handleSubmit(values) {
     this.props.toggleModal();
-    console.log("Current State is: " + JSON.stringify(values));
-    alert("Current State is: " + JSON.stringify(values));
+    this.props.addComment(
+      this.props.dishId,
+      values.rating,
+      values.author,
+      values.comment
+    );
   }
   render() {
     return (
@@ -59,13 +63,13 @@ class CommentForm extends Component {
                 </Control.select>
               </Col>
             </Row>
-            <Label htmlFor="name">Your Name</Label>
+            <Label htmlFor="author">Your Name</Label>
             <Row className="form-group">
               <Col>
                 <Control.text
-                  model=".name"
-                  id="name"
-                  name="name"
+                  model=".author"
+                  id="author"
+                  name="author"
                   placeholder="Full Name"
                   className="form-control"
                   validators={{
@@ -76,7 +80,7 @@ class CommentForm extends Component {
                 />
                 <Errors
                   className="text-danger"
-                  model=".name"
+                  model=".author"
                   show="touched"
                   messages={{
                     required: "Required",
@@ -86,13 +90,13 @@ class CommentForm extends Component {
                 />
               </Col>
             </Row>
-            <Label htmlFor="message">Your Feedback</Label>
+            <Label htmlFor="comment">Your Feedback</Label>
             <Row className="form-group">
               <Col>
                 <Control.textarea
-                  model=".message"
-                  id="message"
-                  name="message"
+                  model=".comment"
+                  id="comment"
+                  name="comment"
                   rows="6"
                   className="form-control"
                 />
@@ -111,7 +115,6 @@ class CommentForm extends Component {
     );
   }
 }
-
 
 function RenderDishdetails({ dish }) {
   if (dish != null) {
@@ -145,7 +148,7 @@ class Dishdetail extends Component {
     });
   }
 
-  renderComments(comments) {
+  renderComments(comments, addComment, dishId) {
     if (comments != null) {
       return (
         <div className="col-12 col-md-5">
@@ -175,6 +178,8 @@ class Dishdetail extends Component {
           <CommentForm
             isModalOpen={this.state.isModalOpen}
             toggleModal={this.toggleModal}
+            dishId={dishId}
+            addComment={addComment}
           />
         </div>
       );
@@ -199,7 +204,11 @@ class Dishdetail extends Component {
           </div>
           <div className="row my-2">
             <RenderDishdetails dish={this.props.dish} />
-            {this.renderComments(this.props.comments)}
+            {this.renderComments(
+              this.props.comments,
+              this.props.addComment,
+              this.props.dish.id
+            )}
           </div>
         </div>
       );
