@@ -26,6 +26,8 @@ class CommentForm extends Component {
     super(props);
     this.state = {};
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    
   }
 
   handleSubmit(values) {
