@@ -17,6 +17,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Control, LocalForm, Errors } from "react-redux-form";
+import { Loading } from "./LoadingComponent";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -26,8 +27,6 @@ class CommentForm extends Component {
     super(props);
     this.state = {};
     this.handleSubmit = this.handleSubmit.bind(this);
-
-    
   }
 
   handleSubmit(values) {
@@ -131,7 +130,9 @@ function RenderDishdetails({ dish }) {
         </Card>
       </div>
     );
-  } else return <div></div>;
+  } else {
+    return <div></div>;
+  }
 }
 
 class Dishdetail extends Component {
@@ -188,6 +189,7 @@ class Dishdetail extends Component {
     } else return <div></div>;
   }
 
+
   render() {
     if (this.props.dish != null) {
       return (
@@ -205,17 +207,17 @@ class Dishdetail extends Component {
             </div>
           </div>
           <div className="row my-2">
-            <RenderDishdetails dish={this.props.dish} />
-            {this.renderComments(
-              this.props.comments,
-              this.props.addComment,
-              this.props.dish.id
-            )}
+          <RenderDishdetails dish={this.props.dish} />
+          {this.renderComments(
+            this.props.comments,
+            this.props.addComment,
+            this.props.dish.id
+          )}
           </div>
         </div>
       );
     } else {
-      return <div></div>;
+      return <div><Loading/></div>;
     }
   }
 }
