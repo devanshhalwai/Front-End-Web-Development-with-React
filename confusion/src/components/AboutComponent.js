@@ -7,6 +7,7 @@ import {
   CardHeader,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import { baseUrl } from '../shared/baseUrl';
 
 class About extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class About extends Component {
         <div className="media my-3" key={leader.id}>
           <img
             className="mr-4"
-            src={leader.image}
+            src={baseUrl + leader.image}
             alt={leader.name}
             width="100"
             height="100"

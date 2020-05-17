@@ -7,8 +7,8 @@ import {
   CardTitle,
   CardSubtitle,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 import { Loading } from "./LoadingComponent";
+import { baseUrl } from '../shared/baseUrl';
 
 class Home extends Component {
   constructor(props) {
@@ -19,16 +19,18 @@ class Home extends Component {
   renderCard(item, isLoading, errMess) {
     if (isLoading) {
       return (
-        <card>
-          <Loading />
-        </card>
+        <div className="container">
+          <div className="row justify-content-center">
+            <Loading />
+          </div>
+        </div>
       );
     } else if (errMess) {
       return <h4>{errMess}</h4>;
-    } else
+    } else if(item!=null)
       return (
         <Card>
-          <CardImg src={item.image} alt={item.name} />
+          <CardImg src={baseUrl + item.image} alt={item.name} />
           <CardBody>
             <CardTitle>{item.name}</CardTitle>
             {item.designation ? (
@@ -41,42 +43,33 @@ class Home extends Component {
   }
 
   render() {
-    if (this.props.dish != null) {
       return (
         <div className="container">
           <div className="row align-items-start">
-            <div className="col-12 col-md m-1">
-              <Link
-                to={`/menu/${this.props.dish.id}`}
-                style={{ textDecoration: "none", color: "black" }}
-              >
+            <div className="col-12 col-md">
                 {this.renderCard(
                   this.props.dish,
-                  this.props.isLoading,
-                  this.props.errMess
+                  this.props.dishesLoading,
+                  this.props.dishErrMess
                 )}
-              </Link>
             </div>
-            <div className="col-12 col-md m-1">
+            <div className="col-12 col-md">
               {this.renderCard(
                 this.props.promotion,
-                this.props.isLoading,
-                this.props.errMess
+                this.props.promoLoading,
+                this.props.promoErrMess
               )}
             </div>
-            <div className="col-12 col-md m-1">
+            <div className="col-12 col-md">
               {this.renderCard(
                 this.props.leader,
-                this.props.isLoading,
-                this.props.errMess
+                this.props.leaderLoading,
+                this.props.leaderErrMess
               )}
             </div>
           </div>
         </div>
       );
-    } else {
-      return <Loading />;
-    }
   }
 }
 

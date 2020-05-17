@@ -18,6 +18,7 @@ import {
 import { Link } from "react-router-dom";
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { Loading } from "./LoadingComponent";
+import { baseUrl } from "../shared/baseUrl";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -122,7 +123,7 @@ function RenderDishdetails({ dish }) {
     return (
       <div className="col-12 col-md-5 m-1">
         <Card key={dish.id}>
-          <CardImg width="100%" top src={dish.image} alt={dish.name} />
+          <CardImg top src={baseUrl + dish.image} alt={dish.name} />
           <CardBody>
             <CardTitle>{dish.name}</CardTitle>
             <CardText>{dish.description}</CardText>
@@ -176,7 +177,7 @@ class Dishdetail extends Component {
             class="btn btn-outline-dark"
             onClick={this.toggleModal}
           >
-            <span class="fa fa-pencil"></span> Submit Comment
+            <span className="fa fa-pencil"></span> Submit Comment
           </button>
           <CommentForm
             isModalOpen={this.state.isModalOpen}
@@ -188,7 +189,6 @@ class Dishdetail extends Component {
       );
     } else return <div></div>;
   }
-
 
   render() {
     if (this.props.dish != null) {
@@ -207,17 +207,23 @@ class Dishdetail extends Component {
             </div>
           </div>
           <div className="row my-2">
-          <RenderDishdetails dish={this.props.dish} />
-          {this.renderComments(
-            this.props.comments,
-            this.props.addComment,
-            this.props.dish.id
-          )}
+            <RenderDishdetails dish={this.props.dish} />
+            {this.renderComments(
+              this.props.comments,
+              this.props.addComment,
+              this.props.dish.id
+            )}
           </div>
         </div>
       );
     } else {
-      return <div><Loading/></div>;
+      return (
+        <div className="container">
+          <div className="row justify-content-center">
+            <Loading />
+          </div>
+        </div>
+      );
     }
   }
 }
