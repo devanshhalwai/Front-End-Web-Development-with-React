@@ -16,8 +16,9 @@ class Home extends Component {
     this.state = {};
   }
 
-  renderCard(item, isLoading, errMess) {
-    if (isLoading) {
+  renderLoading(dishesLoading,promoLoading,leaderLoading)
+  {
+    if(dishesLoading || promoLoading || leaderLoading) {
       return (
         <div className="container">
           <div className="row justify-content-center">
@@ -25,7 +26,12 @@ class Home extends Component {
           </div>
         </div>
       );
-    } else if (errMess) {
+    } else {
+      return(<div></div>);
+    }
+  }
+  renderCard(item, errMess) {
+    if (errMess) {
       return <h4>{errMess}</h4>;
     } else if(item!=null)
       return (
@@ -45,25 +51,27 @@ class Home extends Component {
   render() {
       return (
         <div className="container">
-          <div className="row align-items-start">
+          <div className="row align-items-start my-2">
+            {this.renderLoading(
+              this.props.dishesLoading,
+              this.props.promoLoading,
+              this.props.leaderLoading,
+            )}
             <div className="col-12 col-md">
                 {this.renderCard(
                   this.props.dish,
-                  this.props.dishesLoading,
                   this.props.dishErrMess
                 )}
             </div>
             <div className="col-12 col-md">
               {this.renderCard(
                 this.props.promotion,
-                this.props.promoLoading,
                 this.props.promoErrMess
               )}
             </div>
             <div className="col-12 col-md">
               {this.renderCard(
                 this.props.leader,
-                this.props.leaderLoading,
                 this.props.leaderErrMess
               )}
             </div>

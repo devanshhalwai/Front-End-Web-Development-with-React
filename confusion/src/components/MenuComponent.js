@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import {
   Card,
   CardImg,
-  CardImgOverlay,
+  CardBody,
   CardTitle,
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Loading } from "./LoadingComponent";
-import { baseUrl } from '../shared/baseUrl';
+import { baseUrl } from "../shared/baseUrl";
 
 class Menu extends Component {
   constructor(props) {
@@ -19,7 +19,6 @@ class Menu extends Component {
 
   rendermenu(dishes, isLoading, errMess) {
     if (isLoading) {
-      console.log("loading in menu");
       return (
         <div className="container">
           <div className="row justify-content-center">
@@ -40,13 +39,19 @@ class Menu extends Component {
     } else {
       return dishes.map((dish) => {
         return (
-          <div className="col-12 col-md-5 my-2">
+          <div className="col-12 col-md-3 my-2">
             <Card key={dish.id}>
               <Link to={`/menu/${dish.id}`}>
-                <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
-                <CardImgOverlay>
-                  <CardTitle>{dish.name}</CardTitle>
-                </CardImgOverlay>
+                <CardBody>
+                  <div className="row justify-content-center">
+                    <CardTitle>{dish.name}</CardTitle>
+                  </div>
+                </CardBody>
+                <CardImg
+                  width="100%"
+                  src={baseUrl + dish.image}
+                  alt={dish.name}
+                />
               </Link>
             </Card>
           </div>
@@ -70,7 +75,7 @@ class Menu extends Component {
             <hr />
           </div>
         </div>
-        <div className="row my-3">
+        <div className="row my-3 align-items-center">
           {this.rendermenu(
             this.props.dishes,
             this.props.isLoading,

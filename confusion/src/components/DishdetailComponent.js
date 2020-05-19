@@ -32,7 +32,7 @@ class CommentForm extends Component {
 
   handleSubmit(values) {
     this.props.toggleModal();
-    this.props.addComment(
+    this.props.postComment(
       this.props.dishId,
       values.rating,
       values.author,
@@ -152,25 +152,42 @@ class Dishdetail extends Component {
     });
   }
 
-  renderComments(comments, addComment, dishId) {
+  deletecomment(commentid) {
+    console.log("delete request for" + commentid);
+  }
+
+  renderComments(comments, postComment, dishId, commentsisLoading) {
     if (comments != null) {
       return (
         <div className="col-12 col-md-5">
           <h4>Comments</h4>
           {comments.map((comment) => {
-            return (
-              <ul key={comment.id} className="col-12">
-                <li className="my-2 list-unstyled">{comment.comment}</li>
-                <p className="my-4">
-                  -- {comment.author} ,{" "}
-                  {new Intl.DateTimeFormat("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "2-digit",
-                  }).format(new Date(Date.parse(comment.date)))}
-                </p>
-              </ul>
-            );
+            if (commentsisLoading === false) {
+              return (
+                <ul key={comment.id} className="col-12">
+                  <li className="list-unstyled">{comment.comment}</li>
+                  <div className="row">
+                    <p className="col-auto align-middle">
+                      -- {comment.author} ,
+                      {new Intl.DateTimeFormat("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "2-digit",
+                      }).format(new Date(Date.parse(comment.date)))}
+                    </p> 
+                    {/* <button
+                      type="button"
+                      className="btn btn-primary col-auto"
+                      onClick={() => this.deletecomment(comment.id)}
+                    >
+                      //! Delete
+                    </button> */}
+                  </div>
+                </ul>
+              );
+            } else {
+              return <Loading />;
+            }
           })}
           <button
             type="button"
@@ -183,7 +200,7 @@ class Dishdetail extends Component {
             isModalOpen={this.state.isModalOpen}
             toggleModal={this.toggleModal}
             dishId={dishId}
-            addComment={addComment}
+            postComment={postComment}
           />
         </div>
       );
@@ -210,8 +227,9 @@ class Dishdetail extends Component {
             <RenderDishdetails dish={this.props.dish} />
             {this.renderComments(
               this.props.comments,
-              this.props.addComment,
-              this.props.dish.id
+              this.props.postComment,
+              this.props.dish.id,
+              this.props.commentsisLoading
             )}
           </div>
         </div>
