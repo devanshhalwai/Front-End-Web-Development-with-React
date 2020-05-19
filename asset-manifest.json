@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Ristorante-con-Fusion----Devansh-Halwai/static/css/main.af0cab8a.chunk.css",
+    "main.js": "/Ristorante-con-Fusion----Devansh-Halwai/static/js/main.7f2c8b2d.chunk.js",
+    "main.js.map": "/Ristorante-con-Fusion----Devansh-Halwai/static/js/main.7f2c8b2d.chunk.js.map",
+    "runtime-main.js": "/Ristorante-con-Fusion----Devansh-Halwai/static/js/runtime-main.e5c5f0ab.js",
+    "runtime-main.js.map": "/Ristorante-con-Fusion----Devansh-Halwai/static/js/runtime-main.e5c5f0ab.js.map",
+    "static/css/2.f053de1b.chunk.css": "/Ristorante-con-Fusion----Devansh-Halwai/static/css/2.f053de1b.chunk.css",
+    "static/js/2.c48235ec.chunk.js": "/Ristorante-con-Fusion----Devansh-Halwai/static/js/2.c48235ec.chunk.js",
+    "static/js/2.c48235ec.chunk.js.map": "/Ristorante-con-Fusion----Devansh-Halwai/static/js/2.c48235ec.chunk.js.map",
+    "index.html": "/Ristorante-con-Fusion----Devansh-Halwai/index.html",
+    "precache-manifest.5ae5f3a520b0756992d1cf5163909909.js": "/Ristorante-con-Fusion----Devansh-Halwai/precache-manifest.5ae5f3a520b0756992d1cf5163909909.js",
+    "service-worker.js": "/Ristorante-con-Fusion----Devansh-Halwai/service-worker.js",
+    "static/css/2.f053de1b.chunk.css.map": "/Ristorante-con-Fusion----Devansh-Halwai/static/css/2.f053de1b.chunk.css.map",
+    "static/css/main.af0cab8a.chunk.css.map": "/Ristorante-con-Fusion----Devansh-Halwai/static/css/main.af0cab8a.chunk.css.map",
+    "static/js/2.c48235ec.chunk.js.LICENSE.txt": "/Ristorante-con-Fusion----Devansh-Halwai/static/js/2.c48235ec.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.css": "/Ristorante-con-Fusion----Devansh-Halwai/static/media/fontawesome-webfont.fee66e71.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e5c5f0ab.js",
+    "static/css/2.f053de1b.chunk.css",
+    "static/js/2.c48235ec.chunk.js",
+    "static/css/main.af0cab8a.chunk.css",
+    "static/js/main.7f2c8b2d.chunk.js"
+  ]
+}
